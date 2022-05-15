@@ -5,7 +5,7 @@ import com.example.diploma.algorithm.KnearestAlgorithm;
 import com.example.diploma.config.Config;
 import com.example.diploma.model.IsoLabelWithCoordinates;
 import com.example.diploma.model.exception.IllegalInputParameterException;
-import com.example.diploma.util.duckham.GraphHopperUtil;
+import com.example.diploma.util.GraphHopperUtil;
 import com.graphhopper.GraphHopper;
 import com.graphhopper.isochrone.algorithm.ShortestPathTree;
 import com.graphhopper.routing.ev.BooleanEncodedValue;
@@ -20,7 +20,6 @@ import com.graphhopper.storage.index.Snap;
 import org.locationtech.jts.algorithm.ConvexHull;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
-import org.locationtech.jts.geom.Location;
 import org.springframework.stereotype.Service;
 import org.wololo.geojson.GeoJSON;
 import org.wololo.geojson.MultiLineString;
@@ -31,8 +30,8 @@ import java.util.List;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 
-import static com.example.diploma.util.duckham.GraphHopperUtil.convert;
-import static com.example.diploma.util.duckham.GraphHopperUtil.getPoints;
+import static com.example.diploma.util.GraphHopperUtil.convert;
+import static com.example.diploma.util.GraphHopperUtil.getPoints;
 
 @Service
 public class IsoServiceImpl implements IsoService {

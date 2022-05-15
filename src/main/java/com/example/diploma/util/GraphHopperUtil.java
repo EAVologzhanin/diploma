@@ -1,4 +1,4 @@
-package com.example.diploma.util.duckham;
+package com.example.diploma.util;
 
 import com.graphhopper.GraphHopper;
 import com.graphhopper.config.Profile;
