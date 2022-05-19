@@ -80,7 +80,7 @@ public class IsoServiceImpl implements IsoService {
                 return convert(geometryFactory.createPolygon(list.toArray(Coordinate[]::new)));
             }
             case "DUCKHAM": {
-                DuckhamHull duckhamHull = new DuckhamHull(geometryFactory.createMultiPointFromCoords(coordinates.toArray(Coordinate[]::new)), 0.0015 + smoothingFactor * 0.0002);
+                DuckhamHull duckhamHull = new DuckhamHull(geometryFactory.createMultiPointFromCoords(coordinates.toArray(Coordinate[]::new)), 0.001 + smoothingFactor * 0.0002);
                 return convert(geometryFactory.createPolygon(Arrays.stream(duckhamHull.getConcaveHull().getCoordinates()).map(x -> new Coordinate(x.x, x.y)).collect(Collectors.toList()).toArray(Coordinate[]::new)));
 //                List<com.vividsolutions.jts.geom.Coordinate> coordinates2 = coordinates.stream().map(x -> new com.vividsolutions.jts.geom.Coordinate(x.x, x.y, 0)).collect(Collectors.toList());
 //                com.vividsolutions.jts.geom.GeometryFactory geometryFactory1 = new com.vividsolutions.jts.geom.GeometryFactory();
