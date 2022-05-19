@@ -82,10 +82,6 @@ public class IsoServiceImpl implements IsoService {
             case "DUCKHAM": {
                 DuckhamHull duckhamHull = new DuckhamHull(geometryFactory.createMultiPointFromCoords(coordinates.toArray(Coordinate[]::new)), 0.001 + smoothingFactor * 0.0002);
                 return convert(geometryFactory.createPolygon(Arrays.stream(duckhamHull.getConcaveHull().getCoordinates()).map(x -> new Coordinate(x.x, x.y)).collect(Collectors.toList()).toArray(Coordinate[]::new)));
-//                List<com.vividsolutions.jts.geom.Coordinate> coordinates2 = coordinates.stream().map(x -> new com.vividsolutions.jts.geom.Coordinate(x.x, x.y, 0)).collect(Collectors.toList());
-//                com.vividsolutions.jts.geom.GeometryFactory geometryFactory1 = new com.vividsolutions.jts.geom.GeometryFactory();
-//                DuckhamHull duckhamHull = new DuckhamHull(geometryFactory1.createMultiPoint(coordinates2.toArray(com.vividsolutions.jts.geom.Coordinate[]::new)), 0.002);
-//                return convert(geometryFactory.createPolygon(Arrays.stream(duckhamHull.getConcaveHull().getCoordinates()).map(x -> new Coordinate(x.x, x.y)).collect(Collectors.toList()).toArray(Coordinate[]::new)));
             }
             default:
                 throw new IllegalInputParameterException(String.format("Unknown algorithm: %s", algorithm));
