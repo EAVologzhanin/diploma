@@ -24,6 +24,7 @@ import java.util.function.ToDoubleFunction;
 public class GraphHopperUtil {
     @Getter
     private GraphHopper graphHopper;
+
     public GraphHopperUtil(String path) {
         graphHopper = new GraphHopper();
         graphHopper.setOSMFile(path);
@@ -37,6 +38,7 @@ public class GraphHopperUtil {
         );
         graphHopper.importOrLoad();
     }
+
     public static List<Coordinate> getPoints(Snap snap, QueryGraph queryGraph, ShortestPathTree shortestPathTree, ToDoubleFunction<ShortestPathTree.IsoLabel> fz) {
         final NodeAccess na = queryGraph.getNodeAccess();
         List<Coordinate> sites = new ArrayList<>();
@@ -64,6 +66,7 @@ public class GraphHopperUtil {
         });
         return sites;
     }
+
     public static org.wololo.geojson.Point convert(Point point) {
         org.wololo.geojson.Point json = new org.wololo.geojson.Point(
                 convert(point.getCoordinate()));
@@ -117,7 +120,7 @@ public class GraphHopperUtil {
         return new double[]{coordinate.x, coordinate.y};
     }
 
-    public static  double[][] convert(Coordinate[] coordinates) {
+    public static double[][] convert(Coordinate[] coordinates) {
         double[][] array = new double[coordinates.length][];
         for (int i = 0; i < coordinates.length; i++) {
             array[i] = convert(coordinates[i]);
