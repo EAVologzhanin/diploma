@@ -8,6 +8,19 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 apply plugin: 'java'
 
+task stage(type: Copy, dependsOn: [clean, build]) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'app.jar'
+    }
+}
+stage.mustRunAfter(clean)
+
+clean {
+    project.file('app.jar').delete()
+}
+
 jar {
     manifest {
         attributes(
